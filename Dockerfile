@@ -1,5 +1,16 @@
 FROM node:10-stretch
 
+RUN    apt-get update && apt-get install -y \
+    dirmngr \
+    gnupg \
+    --no-install-recommends \
+    mousepad \
+    libgl1-mesa-dri \
+    libgl1-mesa-glx \
+    xdg-utils \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
 # versions
 ARG ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
 ARG ANDROID_SYSTEM_PACKAGE="android-28"

@@ -18,7 +18,11 @@ Toolchain versions:
 
 `$ docker build -t nativescript .` <-- this might take a while
 
-`$ docker run -i -t nativescript /bin/bash`
+Authorize the Docker container to access your X environment (The need for this has been introduced by Wayland. See: https://wiki.archlinux.org/index.php/Running_GUI_applications_as_root#Wayland).
+
+`$ xhost local:`
+
+`$ docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY nativescript /bin/bash`
 
 
 Optionally see if it's working:
